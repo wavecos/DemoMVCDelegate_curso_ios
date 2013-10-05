@@ -29,25 +29,27 @@
     // Dispose of any resources that can be recreated.
 }
 
--(IBAction)saludar:(id)sender {
-    NSLog(@"Boton presionado");
-    
+-(void) componerSaludo {
     //lblSalida.text = [NSString stringWithFormat:@"Hola, %@", txtNombre.text];
     
     [lblSalida setText:[NSString stringWithFormat:@"Hola, %@", [txtNombre text]]];
     
     // quiero cambiar el texto
-    
     [self.btnSaludar setTintColor:[UIColor redColor]];
     [self.btnSaludar setTitle:@"Chao!" forState:UIControlStateNormal];
     
     [txtNombre resignFirstResponder];
 }
 
+-(IBAction)saludar:(id)sender {
+    NSLog(@"Boton presionado");
+    [self componerSaludo];
+}
+
 // Metodo delegado del textfield
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [txtNombre resignFirstResponder];
+    [self componerSaludo];
     return YES;
 }
 
